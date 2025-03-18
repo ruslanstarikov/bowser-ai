@@ -21,11 +21,11 @@ class BowserAiServiceProvider extends ServiceProvider
 
         // Publish Blade Templates for tools
         $this->publishes([
-            __DIR__.'/../../resources/views' => resource_path('views/vendor/bowser-ai'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/bowser-ai'),
         ], 'bowser-ai-views');
 
         // Load Views from Package
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'bowser-ai');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'bowser-ai');
 
         // Register Artisan Command
         if ($this->app->runningInConsole()) {
