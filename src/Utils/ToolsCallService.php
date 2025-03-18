@@ -2,6 +2,7 @@
 
 namespace Ruslanstarikov\BowserAi\Utils;
 
+use Illuminate\Support\Facades\Config;
 use OpenAI;
 use OpenAI\Client;
 
@@ -14,7 +15,8 @@ class ToolsCallService
     {
         $this->client = $client;
         if($client === null) {
-            $this->client = OpenAI::client(env('OPEN_AI_KEY'));
+            $key = Config::get('bowser-ai.api_key');
+            $this->client = OpenAI::client($key);
         }
     }
 
