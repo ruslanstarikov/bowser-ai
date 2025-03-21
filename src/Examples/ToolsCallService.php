@@ -19,7 +19,7 @@ class ToolsCallService
 		$this->client = OpenAI::client($key);
 	}
 
-	public function run(?string $system_message, string $user_input, array $tools): array
+	public function run(?string $system_message, string $user_input, array $tools, $model = 'gpt-4o-mini'): array
 	{
 		$tools_array = ToolsGenerator::run($tools);
 
@@ -34,7 +34,7 @@ class ToolsCallService
 
 		while (true) {
 			$result = $this->client->chat()->create([
-				'model' => 'gpt-4o-mini',
+				'model' => $model,
 				'messages' => $this->messages,
 				'tools' => $tool_schemas
 			]);
